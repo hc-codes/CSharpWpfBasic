@@ -1,0 +1,54 @@
+﻿<Window x:Class="WpfFormFillAndEdit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFormFillAndEdit"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800">
+    <Grid >
+     
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Name" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Margin="10"/>
+        <Label Content="Age" Grid.Row="1" HorizontalAlignment="Left" FontSize="20" Margin="10"/>
+        <Label Content="Sex" Grid.Row="2" HorizontalAlignment="Left" FontSize="20" Margin="10"/>
+        <Label Content="Designation" Grid.Row="3" HorizontalAlignment="Left" FontSize="20" Margin="10"/>
+        <Label Content="Place" Grid.Row="4" HorizontalAlignment="Left" FontSize="20" Margin="10"/>
+        <TextBox x:Name="txtName" Grid.Row="0" HorizontalAlignment="Stretch" Margin="150,15,15,15"/>
+        <TextBox x:Name="txtAge" Grid.Row="1" HorizontalAlignment="Stretch" Margin="150,15,15,15"/>
+        <TextBox x:Name="txtSex" Grid.Row="2" HorizontalAlignment="Stretch" Margin="150,15,15,15"/>
+        <TextBox x:Name="txtDesg" Grid.Row="3" HorizontalAlignment="Stretch" Margin="150,15,15,15"/>
+        <TextBox x:Name="txtPlace" Grid.Row="4" HorizontalAlignment="Stretch" Margin="150,15,15,15"/>
+        <Button x:Name="btnSave" Grid.Row="5" Margin="290,0,0,0" Background="Green" Foreground="Wheat" Click="btnSave_Click" HorizontalAlignment="Left">Save Details</Button>
+        <Button x:Name="btnUpdate" Grid.Row="5" HorizontalAlignment="Center" Foreground="Green" Margin="100,0,0,0" Background="Orange" Click="btnUpdate_Click">Update Details</Button>
+
+        <DataGrid Background="Coral" RowBackground="Beige" AutoGenerateColumns="False" CanUserAddRows="False"   SelectedCellsChanged="dgData_SelectedCellsChanged" x:Name="dgData"  Margin="10" Grid.Row="6" SelectionMode="Single" MouseDoubleClick="dgData_MouseDoubleClick" AlternatingRowBackground="Aqua" SelectionChanged="DataGrid_SelectionChanged" RowDetailsVisibilityMode="Visible" SelectionUnit="FullRow" SnapsToDevicePixels="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header = "Name" Binding = "{Binding Name}" Width="160" />
+                <DataGridTextColumn Header = "Age" Binding = "{Binding Age}"  Width="120"/>
+                <DataGridTextColumn Header = "Sex" Binding = "{Binding Sex}" Width="120" />
+                <DataGridTextColumn Header = "Designation" Binding = "{Binding Designation}"  Width="180"/>
+                <DataGridTextColumn Header = "Place" Binding = "{Binding Place}" />
+            
+            </DataGrid.Columns>
+
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow" >
+                    <EventSetter Event="Selected" Handler="DataGridRow_Selected"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+            
+        </DataGrid>
+    </Grid>
+   
+</Window>

@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfCustomProperty.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCustomProperty"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button FontSize="14" FontWeight="Bold">
+            <!--Set the Background property of the Button to
+    a LinearGradientBrush.-->
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0.5" 
+                            EndPoint="1,0.5">
+                    <GradientStop Color="Aqua" Offset="0.0" />
+                    <GradientStop Color="PeachPuff" Offset="0.9" />
+                </LinearGradientBrush>
+
+            </Button.Background>
+            View message
+        </Button>
+        <Button Name="btnMove" Content="Hiii" HorizontalAlignment="Left" Margin="20" Height="50" Width="50" Background="Aqua" FontWeight="Bold" FontSize="20" Click="Button_Click"/>
+    </Grid>
+</Window>

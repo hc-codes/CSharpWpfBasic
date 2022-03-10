@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfValueConvterter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:WpfValueConvterter.Converters"
+        xmlns:local="clr-namespace:WpfValueConvterter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="400">
+    <Window.Resources>
+        <converters:TextToBrushesConverter x:Key="TextToBrush"/>
+        <converters:BoolToDateConverter x:Key="BoolToDate"/>
+    </Window.Resources>
+    <StackPanel>
+        <TextBox x:Name="txtName" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" Width="250"/>
+        <Button Background="{Binding  ElementName=txtName, Path=Text,  Converter={StaticResource TextToBrush}}" x:Name="btnSave" Content="Save" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="100" />
+        <ComboBox x:Name="cbFormats"  Width="100" Margin="0,10,0,0">
+            <ComboBoxItem Content="dd/MM/yyyy"/>
+            <ComboBoxItem Content="dd/MMM/yyyy"/>
+            <ComboBoxItem Content="MMM/dd/yyyy"/>
+            <ComboBoxItem Content="MMMM/dd/yyyy"/>
+            <ComboBoxItem Content="dd/MMMM/yyyy"/>
+            <ComboBoxItem Content="dddd/MMMM/yyyy"/>
+        </ComboBox>
+        <Label Width="250" Margin="0,20,0,0" Content="{Binding Path=SelectionBoxItem, ElementName=cbFormats, Converter={StaticResource BoolToDate}}"/>
+    </StackPanel>
+</Window>
